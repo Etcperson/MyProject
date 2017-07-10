@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 /**
  * 类注释：自定义组合控件
@@ -45,23 +46,25 @@ public class MyView extends LinearLayout implements View.OnClickListener {
 	public void onClick(View v) {
 		//获取editText中的内容
 		String s = mEditText.getText().toString().trim();
-		if (s!=""&&s!=null){
+		if (s != "" && s != null) {
 			con = Integer.valueOf(s);
-		}else if(s==""){
+		} else if (s == "") {
 			con = 0;
 		}
 
 		switch (v.getId()) {
 			//添加按钮的点击事件
 			case R.id.btn_add:
-					con++;
-					mEditText.setText(con + "");
+				con++;
+				mEditText.setText(con + "");
+				Toast.makeText(getContext(), "" + con, Toast.LENGTH_SHORT).show();
 				break;
 			//减少按钮的点击事件
 			case R.id.btn_down:
 				if (con > 0) {
 					con--;
 					mEditText.setText(con + "");
+					Toast.makeText(getContext(), "" + con, Toast.LENGTH_SHORT).show();
 				}
 				break;
 		}
